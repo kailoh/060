@@ -1,0 +1,51 @@
+body {
+	margin:0px;
+	padding:0px;
+	position:relative;
+}
+#navBarList {
+	margin:0px auto;
+	padding:0;
+	list-style-type: none;
+	position:relative;
+	width:900px;
+	height:50px;
+	background-color:#F4F4F4;
+	z-index:10000;
+	text-align:left;
+}
+
+#navBarList li {
+	display:inline-block;
+	text-align:center;
+	line-height: 3em;
+	border-bottom:4px solid silver;
+}
+
+#navBarList li.card-done {
+	color:black;
+	border-bottom:4px solid #da3f26;
+    transition: all .2s ease-in-out;
+    -webkit-transition:all .2s ease-in-out;
+}
+
+.cardTrackerContainer div.card {
+	float:left;
+    background-color:white;
+}
+
+.sticky-bubble{
+	position:fixed;
+	top:90%;
+	left:87%;
+	background:#000000;
+	color:#00CCFF;
+	font-size:15px;
+	padding:5px;
+	width:auto;
+	height:50px;
+	padding-top:10px;
+	text-align:center;
+	box-shadow: 2px 3px 5px #888;
+	float:left;
+}
