@@ -63,7 +63,7 @@ function CardTracker(cardsContainerID, navBarID) {
 		buildCardTracker(cardTrackerWidthFactor);
 		hideBlockingCards();
 		// Add some animation when user clicks on so
-		$(document).on("click","a",function(e){
+		$("#navBarList li").on("click","a",function(e){
 			e.preventDefault();
 			var id = $(this).attr("href"), topSpace = 30;
 			$('html, body').animate({

@@ -90,7 +90,7 @@
 			
 			switch (selectedClient) {
 				case 'excel':
-					$('#embedContents').html("<div><h3>Explore the JavaScript API in Excel</h3></div><BR><p>Below, you'll see an Excel Add-in that we've built. This Add-in interacts with the Office document using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe width='100%' height='600' frameborder='0' scrolling='no' src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112968&authkey=AG3QwhNGK4H2nSw&em=2&wdAllowInteractivity=False'></iframe><BR><BR>You can download this add-in and more from the <a class='link' href='http://store.office.com'>Office Store.</a>");
+					$('#embedContents').html("<div><h3>Explore the JavaScript API in Excel</h3></div><BR><p>Below, you'll see an Excel Add-in that we've built. This Add-in interacts with the Office document using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe width='100%' height='600' frameborder='0' scrolling='no' src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112968&authkey=AG3QwhNGK4H2nSw&em=2&wdAllowInteractivity=False'></iframe><BR><BR>You can download this add-in and more from the <a href='http://store.office.com' target='_blank'>Office Store.</a>");
 					
 					$('#option1title').text(content.title);
 					$('#option1img').attr('src', content.img.excel);
@@ -129,7 +129,7 @@
 					
 				case 'powerpoint':
 				
-					$('#embedContents').html("<div><h3>Explore the JavaScript API in PowerPoint</h3></div><BR><p>Below, you'll see a PowerPoint Add-in that we've built. This Add-in interacts with the Office document using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112972&authkey=AMMZi9lIOFr5AaE&em=2&wdAr=1.7777777777777777' width='610px' height='367px' frameborder='0'></iframe><BR><BR>You can download this add-in and more from the <a class='link' href='http://store.office.com'>Office Store.</a>");
+					$('#embedContents').html("<div><h3>Explore the JavaScript API in PowerPoint</h3></div><BR><p>Below, you'll see a PowerPoint Add-in that we've built. This Add-in interacts with the Office document using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112972&authkey=AMMZi9lIOFr5AaE&em=2&wdAr=1.7777777777777777' width='610px' height='367px' frameborder='0'></iframe><BR><BR>You can download this add-in and more from the <a href='http://store.office.com'>Office Store.</a>");
 				
 					$('#option1title').text(content.title);
 					$('#option1img').attr('src', content.img.powerpoint);
@@ -292,8 +292,8 @@
 								<h4 class="bottomOverlayText" style="cursor:pointer">Download</h4>
 								Download a sample from GitHub
 							</div>
-						</div>	
 					</div>					
+						</div>	
 					
 				</div>
 			</div>
@@ -301,15 +301,16 @@
             <div class="card" id="4" name="Next Steps">
                 <div><h3>Next Steps</h3></div>
                 <div style="margin-top:20px;">
-                <ul style="line-height:2;.">
-                    <li><a class="link" href="https://msdn.microsoft.com/EN-US/library/office/jj220073.aspx">Design Guidelines</a><div>Tips and tricks to make your Add-in gorgeous and easy to use.</div></li>
-                    <li><a class="link" href="https://msdn.microsoft.com/en-us/library/office/jj220082.aspx">More Code Samples</a><div>A list of useful samples that you can check out to help build your Add-ins</div></li>
-                    <li><a class="link" href="http://www.microsoftvirtualacademy.com/training-courses/office-guides-apps-for-office-and-sharepoint">Training Videos</a><div>Watch in-depth training videos that show you how to build an Add-in from start to finish</div></li>
-					<li><a class="link" href="https://msdn.microsoft.com/EN-US/library/office/fp123515.aspx">Deploy Your Add-in</a><div>Learn about the various methods you can use to deploy and publish your Add-ins</div></li>
-                </ul>
-            </div>    
-            
-        </div><!--scroll area-->
+					<ul style="line-height:2;">
+						<li><a href="https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx" target='_blank'>Reference</a><div>Reference documentation for the JavaScript API for Add-ins</div></li>
+						<li><a href="https://msdn.microsoft.com/en-us/library/office/jj220082.aspx" target='_blank'>More Code Samples</a><div>A list of other useful samples that you can check out to help build your Add-ins</div></li>
+						<li><a href="http://www.microsoftvirtualacademy.com/training-courses/office-guides-apps-for-office-and-sharepoint" target='_blank'>Training Videos</a><div>Watch in-depth training videos that show you how to build an Add-in from start to finish</div></li>
+						<li><a href="https://msdn.microsoft.com/EN-US/library/office/fp123515.aspx" target='_blank'>Deploy Your Add-in</a><div>Learn about the various methods you can use to deploy and publish your Add-ins</div></li>
+						<li><a href="https://msdn.microsoft.com/EN-US/library/office/jj220073.aspx" target='_blank'>Design Guidelines</a><div>Tips and tricks to make your Add-in gorgeous and easy to use.</div></li>
+					</ul>
+				</div>    
+			</div><!--scroll area-->
+		
         </div>
     </body>
 </html>
