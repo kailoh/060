@@ -45,7 +45,7 @@ function CardTracker(cardsContainerID, navBarID) {
 		    if (i == blockingCards[0]+1) {
 		        break;
 		    }
-			var top = $("#"+cardIDs[i]).position().top - window.innerHeight / 2;
+		    var top = $("#" + cardIDs[i]).position().top - $("#" + navBarID).height(); //window.innerHeight / 2;
 			var item = $(listItems[i]);
 			if(lastCardSaved===false && doctop <= top) {
 				savestepToCache(i-1);
@@ -54,7 +54,7 @@ function CardTracker(cardsContainerID, navBarID) {
 			item.toggleClass(doneClassName, doctop > top);
 		}
 		//sticky nav bar
-		$("#"+navBarID).toggleClass('navbar-fixed-top', doctop > 70);
+		$("#" + navBarID).toggleClass('navbar-fixed-top', doctop > 70);
 
 	}
 	
@@ -62,20 +62,29 @@ function CardTracker(cardsContainerID, navBarID) {
 	this.init=function(cardTrackerWidthFactor) {
 		buildCardTracker(cardTrackerWidthFactor);
 		hideBlockingCards();
-		// Add some animation when user clicks on so
+		// Add click events for the nav items
 		$("#navBarList li").on("click","a",function(e){
 			e.preventDefault();
-			var id = $(this).attr("href"), topSpace = 30;
+			var id = $(this).attr("href");
+			var topSpace = $("#" + navBarID).height();
 			$('html, body').animate({
-			  scrollTop: $(id).offset().top - topSpace
+			    scrollTop: $(id).offset().top - topSpace
 			}, 800);
 		});
 		startFromLastStep();
 	}
 	
-	//@	cardIndex: index of the card to store in cookie
+    // Scroll the specified card into view
+	this.showCard = function (id) {
+	    var topSpace = $("#" + navBarID).height();
+	    $('html, body').animate({
+	        scrollTop: $(id).offset().top - topSpace
+	    }, 800);
+	}
+
+    //@	cardIndex: index of the card to store in cookie
 	function savestepToCache(cardIndex) {
-		//$.cookie('currentCardIndex', cardIndex, {expires:7,path:'/'});
+		$.cookie('currentCardIndex', cardIndex, {expires:7,path:'/'});
 	}
 	
 	// returns the card index from cookie
@@ -145,7 +154,7 @@ function CardTracker(cardsContainerID, navBarID) {
 			    }
             }
 			var url;
-			var ahrefId = "id = '" + navbarAnchorItemIDTag+"-"+cardID +"'";
+			var ahrefId = "id = '" + navbarAnchorItemIDTag + "-" + cardID + "'";
 			if (blockingCardAlreadySeen ==true) {
 			    url = "<a " + ahrefId + " href = " + "'#" + linkingCardID + "'>" + name + "</a>";
 			}
@@ -153,7 +162,7 @@ function CardTracker(cardsContainerID, navBarID) {
 			    url = "<a " + ahrefId + " href = " + "'#" + cardID + "'>" + name + "</a>";
 			}
 			var navItemId = "id = '" + navItemIDTag + "-" + cardID + "'";
-			var listItem = "<li "+ navItemId+" style='width:" + width + "%;'>" + url + "</li>";
+			var listItem = "<li " + navItemId + " style='width:" + width + "%;'>" + url + "</li>";
 			orderedList.append(listItem);
         }
 	}
@@ -182,6 +191,7 @@ function CardTracker(cardsContainerID, navBarID) {
               else {
                   var item = $("#" + navbarAnchorItemIDTag + "-" + cardIDs[startIndex]);
                   item.attr("href", "#" + cardIDs[nextBlockingCardIndex]);
+                  var navItemId = "id = '" + navItemIDTag + "-" + startIndex + "'";
               }
           }
  	}

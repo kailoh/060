@@ -144,7 +144,7 @@ pre, p {
 .card {
     
     height:auto;
-    min-height:300px;
+    min-height:100px;
     border-color:white;
     background-color:white !important;
     margin-top:20px;
@@ -165,7 +165,6 @@ pre, p {
      border: 1px solid #ddd;
  
 }
-
 
 blockquote {
   padding: 5px 10px !important;
