@@ -20,7 +20,17 @@
         
 	$(document).scroll(function() {
 		cardTracker.updateScroll();
-	});	
+	});
+
+	//post a message to the hosting window to resize
+	$("#body").load(function () {
+	    resize();
+	});
+
+	function resize() {
+	    var height = document.getElementsByTagName("html")[0].scrollHeight;
+	    window.parent.postMessage(["setHeight", height], "*");
+	}
 	</script>
 	
 	<script>
