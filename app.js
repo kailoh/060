@@ -147,3 +147,13 @@ function selectClient(selectedClient) {
     cardTracker.removeBlockingCard();
     cardTracker.showCard("#3");
 }
+
+//post a message to the hosting window to resize
+$("#body").load(function () {
+    resize();
+});
+
+function resize() {
+    var height = document.getElementsByTagName("html")[0].scrollHeight;
+    window.parent.postMessage(["setHeight", height], "*");
+}
