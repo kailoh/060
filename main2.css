@@ -410,3 +410,36 @@ pre.response {
   border-color: #da3f26;
   outline: none;
 }
+
+.addinOption {
+	position: relative;
+	max-width: 500px;
+}
+
+.mouseoverOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.8);
+	color: #fff;
+}
+	
+.topOverlay {
+	height: 50%;
+	padding: 20 20 0 20;
+}
+	
+.bottomOverlay {
+	height: 50%;
+	padding: 0 20 20 20;
+}
+	
+.topOverlayText {
+	color: white;
+}
+	
+.bottomOverlayText {
+	color: white;
+}
