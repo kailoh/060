@@ -90,7 +90,7 @@
 			
 			switch (selectedClient) {
 				case 'excel':
-					$('#embedContents').html("<div><h3>Explore the JavaScript API in Excel</h3></div><BR><p>Below, you'll see an Excel Add-in that we've built. This Add-in interacts with the Excel spreadsheet in which it is embedded, using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe width='100%' height='600' frameborder='0' scrolling='no' src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112968&authkey=AG3QwhNGK4H2nSw&em=2&wdAllowInteractivity=False'></iframe><BR><BR>You can download this add-in and more from the <a href='https://store.office.com/api-tutorial-for-office-WA104077907.aspx?assetid=WA104077907' target='_blank'>Office Store.</a>");
+					$('#embedContents').html("<div><h3>Explore the JavaScript API in Excel</h3></div><BR><p>Below, you'll see an Excel Add-in that we've built. This Add-in interacts with the Office document using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe width='100%' height='600' frameborder='0' scrolling='no' src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112968&authkey=AG3QwhNGK4H2nSw&em=2&wdAllowInteractivity=False'></iframe><BR><BR>You can download this add-in and more from the <a href='http://store.office.com' target='_blank'>Office Store.</a>");
 					
 					$('#option1title').text(content.title);
 					$('#option1img').attr('src', content.img.excel);
@@ -109,7 +109,7 @@
 					break;
 					
 				case 'outlook':
-					$('#embedContents').html("<div><h3>Explore Outlook Add-ins</h3></div><BR>This short video shows you what an Add-in is and gives a brief introduction to the JavaScript API that powers the Add-ins model.<BR><BR><iframe width='800' height='452' src='https://www.youtube.com/embed/Hov8f_VniCc' frameborder='0' allowfullscreen></iframe><BR><BR><p>What can you build for Outlook? Check out these cool apps in the <a href='https://store.office.com/appshome.aspx?ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook' target='_blank'>Office Store</a> for some inspiration.</p><BR><div class='row'><div class='col-md-2'><a href='https://store.office.com/package-tracker-WA104162083.aspx?assetid=WA104162083&sourcecorrid=398c52e1-d7aa-4025-b55f-8b2543a5be61&searchapppos=17' target='_blank'><img src='packagetracker.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/linkedin-for-outlook-WA102996382.aspx?assetid=WA102996382&sourcecorrid=faab8d46-5571-4ba9-841a-97f6d022fc55&searchapppos=0' target='_blank'><img src='linkedin.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/docusign-for-outlook-WA104218067.aspx?assetid=WA104218067&ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook&homprd=Outlook&sourcecorrid=30d1d84a-07ff-48cd-9acd-ef7791994b87&homappcat=Editor%2527s%2BPicks&homapppos=2&homchv=1' target='_blank'><img src='docusign.png' style='border:0'></a></div></div>");
+					$('#embedContents').html("<div><h3>Explore Outlook Add-ins</h3></div><BR>This short video shows you what an Add-in is and gives a brief introduction to the JavaScript API that powers the Add-ins model.<BR><BR><iframe width='800' height='452' src='https://www.youtube.com/embed/Hov8f_VniCc' frameborder='0' allowfullscreen></iframe><BR><BR><p>What can you build for Outlook? Check out these cool apps in the Office Store for some inspiration.</p><BR><div class='row'><div class='col-md-2'><a href='https://store.office.com/linkedin-for-outlook-WA102996382.aspx?assetid=WA102996382&sourcecorrid=faab8d46-5571-4ba9-841a-97f6d022fc55&searchapppos=0' target='_blank'><img src='linkedin.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/docusign-for-outlook-WA104218067.aspx?assetid=WA104218067&ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook&homprd=Outlook&sourcecorrid=30d1d84a-07ff-48cd-9acd-ef7791994b87&homappcat=Editor%2527s%2BPicks&homapppos=2&homchv=1' target='_blank'><img src='docusign.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/salesforce-app-for-outlook-beta-WA104379334.aspx?assetid=WA104379334&ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook&homprd=Outlook&sourcecorrid=30d1d84a-07ff-48cd-9acd-ef7791994b87&homappcat=Editor%2527s%2BPicks&homapppos=1&homchv=1' target='_blank'><img src='smartsheet.jpg' style='border:0'></a></div></div>");
 								
 					$('#option1title').text(compose.title);
 					$('#option1img').attr('src', compose.img);
@@ -129,7 +129,7 @@
 					
 				case 'powerpoint':
 				
-					$('#embedContents').html("<div><h3>Explore the JavaScript API in PowerPoint</h3></div><BR><p>Below, you'll see a PowerPoint Add-in that we've built. This Add-in interacts with the PowerPoint presentation in which it is embedded, using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112972&authkey=AMMZi9lIOFr5AaE&em=2&wdAr=1.7777777777777777' width='610px' height='367px' frameborder='0'></iframe><BR><BR>You can download this add-in and more from the <a href='https://store.office.com/api-tutorial-for-office-WA104077907.aspx?assetid=WA104077907'>Office Store.</a>");
+					$('#embedContents').html("<div><h3>Explore the JavaScript API in PowerPoint</h3></div><BR><p>Below, you'll see a PowerPoint Add-in that we've built. This Add-in interacts with the Office document using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112972&authkey=AMMZi9lIOFr5AaE&em=2&wdAr=1.7777777777777777' width='610px' height='367px' frameborder='0'></iframe><BR><BR>You can download this add-in and more from the <a href='http://store.office.com'>Office Store.</a>");
 				
 					$('#option1title').text(content.title);
 					$('#option1img').attr('src', content.img.powerpoint);
@@ -219,7 +219,7 @@
 
             </div>
         
-            <div class="card" id="2" name="Select Office app" isBlocking="true">
+            <div class="card" id="2" name="Select Host" isBlocking="true">
                 <h4>Select the Office app that you wish to build an Add-in for:</h4><br>
                 <div class="btn-group btn-group-justified" role="group">
                     <div class="btn-group" role="group">
@@ -253,8 +253,8 @@
 			
             </div>
             
-            <div class="card" id="4" name="Start building" isBlocking="true">
-				<div><h3>Build your first Add-in</h3></div><br>
+            <div class="card" id="4" name="Start Building" isBlocking="true">
+				<div><h3>Build Your First Add-in</h3></div><br>
 				<p>Choose which kind of Add-in you'd like to build.</p><br>
 				
 				<div class="row" id="optionRow">
@@ -298,12 +298,13 @@
 				</div>
 			</div>
             
-            <div class="card" id="5" name="Next steps">
-                <div><h3>Next steps</h3></div>
+            <div class="card" id="5" name="Next Steps">
+                <div><h3>Next Steps</h3></div>
                 <div style="margin-top:20px;">
 					<ul style="line-height:2;">
 						<li><a href="https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx" target='_blank'>Reference</a><div>Reference documentation for the JavaScript API for Add-ins</div></li>
-						<li><a href="http://dev.office.com/code-samples?filters=Apps%20for%20Office" target='_blank'>More Code Samples</a><div>A list of other useful samples that you can check out to help build your Add-ins</div></li>
+						<li><a href="https://msdn.microsoft.com/en-us/library/office/jj220082.aspx" target='_blank'>More Code Samples</a><div>A list of other useful samples that you can check out to help build your Add-ins</div></li>
+						<li><a href="http://www.microsoftvirtualacademy.com/training-courses/office-guides-apps-for-office-and-sharepoint" target='_blank'>Training Videos</a><div>Watch in-depth training videos that show you how to build an Add-in from start to finish</div></li>
 						<li><a href="https://msdn.microsoft.com/EN-US/library/office/fp123515.aspx" target='_blank'>Deploy Your Add-in</a><div>Learn about the various methods you can use to deploy and publish your Add-ins</div></li>
 						<li><a href="https://msdn.microsoft.com/EN-US/library/office/jj220073.aspx" target='_blank'>Design Guidelines</a><div>Tips and tricks to make your Add-in gorgeous and easy to use.</div></li>
 					</ul>
