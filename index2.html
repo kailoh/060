@@ -53,7 +53,7 @@
 			'title': 'Compose',
 			'img': 'outlookcompose.PNG',
 			'text': 'The Mail Add-in appears when the user is composing a new email message',
-			'overlaytop': 'openAddin("http://aka.ms/Nahkwl")',   
+			'overlaytop': 'openAddin("napatour.html")',   
 			'overlaybottom': 'openAddin("https://github.com/OfficeDev/Add-in-MailCompose-Sample")'
 		};
 		
@@ -66,7 +66,7 @@
 		};
 		
 		function enableOption1() {
-			$('#option1').attr('style', 'background:#DBDBDB; margin:20px; padding:20px; visibility:visible;');
+			$('#option1').attr('style', 'border-style: solid; border-color: #BD3501; background: #FFFFFF; margin:20px; padding:20px; visibility:visible;');
 			$('#option1').mouseenter(function() {
 				$('#option1overlay').attr('style', 'visibility:visible; cursor:pointer');
 			});
@@ -76,7 +76,7 @@
 		}
 		
 		function enableOption2() {
-			$('#option2').attr('style', 'background:#DBDBDB; margin:20px; padding:20px; visibility:visible;');
+			$('#option2').attr('style', 'border-style: solid; border-color: #BD3501; background: #FFFFFF; margin:20px; padding:20px; visibility:visible;');
 			$('#option2').mouseenter(function() {
 				$('#option2overlay').attr('style', 'visibility:visible; cursor:pointer');
 			});
@@ -169,6 +169,7 @@
 		
 	</script>
 	<style>
+	
 	.addinOption {
 		position: relative;
 		max-width: 500px;
@@ -393,7 +394,7 @@
 				<div class="row" id="optionRow">
 				
 					<div class="col-md-5 addinOption" id="option1">
-						<h4 id="option1title">Task Pane</h4>
+						<h4 id="option1title" style="color:#BD3501;font-weight:bold;">Task Pane</h4>
 						<img id="option1img" src="exceltaskpane.PNG" style="border:0px; margin:20 0 20 0;">
 						<p id="option1text">A Task Pane Add-in appears next to the document.</p>
 						<div id="option1overlay" class="mouseoverOverlay" style="visibility:hidden">
@@ -410,7 +411,7 @@
 					</div>
 					
 					<div class="col-md-5 addinOption" id="option2">
-						<h4 id="option2title">Content Add-in</h4>
+						<h4 id="option2title" style="color:#BD3501;font-weight:bold;">Content Add-in</h4>
 						<img id="option2img" src="excelcontent.PNG" style="border:0px; margin:20 0 20 0;">
 						<p id="option2text">A Content Add-in appears in-line with the document</p>
 						<div id="option2overlay" class="mouseoverOverlay" style="visibility:hidden">
