@@ -11,10 +11,8 @@
 	<link href="http://dev.office.com/Themes/DevOffice/WindowsDevFiles/css/10.min.css" rel="stylesheet" type="text/css">
     <link href="https://dev.office.com/Themes/DevOffice/Styles/site.min.css" rel="stylesheet" type="text/css">
 	<link href="navBar.css" type="text/css" rel="stylesheet">
-
 	
     <script>
-        
 	var cardTracker = new CardTracker("o365-progressTrackerContainer","myNavBar");
 	$(document).ready(function() {
 		cardTracker.init(1.0);
@@ -26,104 +24,134 @@
 	</script>
 	
 	<script>
-		var client;
-		
-		function openAddin(URL) {
-			window.open(URL, "_blank");
-			cardTracker.removeBlockingCard();
-		}
 		
 		var taskPane = {
 			'title': 'Task Pane',
 			'img': {'excel': 'exceltaskpane.PNG', 'word': 'wordtaskpane.PNG', 'powerpoint':'powerpointtaskpane.PNG'},
 			'text': 'A Task Pane Add-in appears next to the document.',
-			'overlaytop': {'excel': 'openAddin("http://aka.ms/Fb7hmn")', 'word': 'openAddin("http://aka.ms/Rtbsj3")', 'powerpoint': 'openAddin("http://aka.ms/Y4lf7t")'},
-			'overlaybottom': 'openAddin("https://github.com/OfficeDev/Add-in-TaskPane-Sample")'
+			'overlaytop': {'excel': 'http://aka.ms/Fb7hmn', 'word': 'http://aka.ms/Rtbsj3', 'powerpoint': 'http://aka.ms/Y4lf7t'},
+			'overlaybottom': 'https://github.com/OfficeDev/Add-in-TaskPane-Sample'
 		};
 		
 		var content = {
 			'title': 'Content',
 			'img': {'excel': 'excelcontent.PNG', 'powerpoint':'powerpointcontent.PNG'},
 			'text': 'A Content Add-in appears in-line with the document.',
-			'overlaytop': {'excel': 'openAddin("http://aka.ms/Lgaz15")', 'powerpoint': 'openAddin("http://aka.ms/Pzs7nq")'},
-			'overlaybottom': 'openAddin("https://github.com/OfficeDev/Add-in-Content-Starter")'
+			'overlaytop': {'excel': 'http://aka.ms/Lgaz15', 'powerpoint': 'http://aka.ms/Pzs7nq'},
+			'overlaybottom': 'https://github.com/OfficeDev/Add-in-Content-Starter'
 		};
 		
 		var compose = {
 			'title': 'Compose',
 			'img': 'outlookcompose.PNG',
-			'text': 'The Mail Add-in appears when the user is composing a new email message',
-			'overlaytop': 'openAddin("napatour.html")',   
-			'overlaybottom': 'openAddin("https://github.com/OfficeDev/Add-in-MailCompose-Sample")'
+			'text': 'Appears when the user is composing a new email',
+			'overlaytop': 'http://aka.ms/Nahkwl',   
+			'overlaybottom': 'https://github.com/OfficeDev/Add-in-MailCompose-Sample'
 		};
 		
 		var read = {
 			'title': 'Read',
 			'img': 'outlookread.PNG',
-			'text': 'The Mail Add-in appears when the user is reading an email message',
-			'overlaytop': 'window.open("http://aka.ms/Wwq6m4", "_blank")', 
-			'overlaybottom': 'window.open("https://github.com/OfficeDev/Add-in-MailRead-Sample", "_blank")'
+			'text': 'Appears when the user is reading an email message',
+			'overlaytop': 'http://aka.ms/Wwq6m4', 
+			'overlaybottom': 'https://github.com/OfficeDev/Add-in-MailRead-Sample'
 		};
 		
 		function enableOption1() {
-			$('#option1').attr('style', 'border-style: solid; border-color: #BD3501; background: #FFFFFF; margin:20px; padding:20px; visibility:visible;');
-			$('#option1').mouseenter(function() {
-				$('#option1overlay').attr('style', 'visibility:visible; cursor:pointer');
-			});
-			$('#option1').mouseleave(function() {
-				$('#option1overlay').attr('style', 'visibility:hidden');
-			});
+			$('#option1button').css('visibility', 'visible');
 		}
 		
 		function enableOption2() {
-			$('#option2').attr('style', 'border-style: solid; border-color: #BD3501; background: #FFFFFF; margin:20px; padding:20px; visibility:visible;');
-			$('#option2').mouseenter(function() {
-				$('#option2overlay').attr('style', 'visibility:visible; cursor:pointer');
-			});
-			$('#option2').mouseleave(function() {
-				$('#option2overlay').attr('style', 'visibility:hidden');
-			});
+			$('#option2button').css('visibility', 'visible');		
+		}
+		
+		function selectMore(selectedClient, selectedShape) {
+			console.log("selectedClient: " + selectedClient);
+			console.log("selectedShape: " + selectedShape);
+			
+			$("#more").css('display', 'block');
+			var topSpace = $("#myNavBar").height();
+			$('html, body').animate({
+				scrollTop: $('#more').offset().top - topSpace
+			}, 800);
+			
+			switch(selectedShape) {
+				case 'content':
+					$('#more-github').attr('href', content.overlaybottom);
+					if (selectedClient == 'excel') {
+						$('#more-playground').attr('href', content.overlaytop.excel);
+					}
+					if (selectedClient == 'powerpoint') {
+						$('#more-playground').attr('href', content.overlaytop.powerpoint);
+					}
+					break;
+				
+				case 'taskPane':
+					$('#more-github').attr('href', taskPane.overlaybottom);
+					if (selectedClient == 'excel') {
+						$('#more-playground').attr('href', taskPane.overlaytop.excel);
+					}
+					if (selectedClient == 'powerpoint') {
+						$('#more-playground').attr('href', taskPane.overlaytop.powerpoint);
+					}
+					if (selectedClient == 'word') {
+						$('#more-playground').attr('href', taskPane.overlaytop.word);
+					}
+					break;
+				
+				case 'compose':
+					$('#more-github').attr('href', compose.overlaybottom);
+					$('#more-playground').attr('href', compose.overlaytop);
+					break;
+				
+				case 'read':
+					$('#more-github').attr('href', read.overlaybottom);
+					$('#more-playground').attr('href', read.overlaytop);
+					break;
+			}				
+			
 		}
 			
 		function selectClient(selectedClient) {
-			client = selectedClient;
 			$('#option1').attr('style', 'visibility:hidden');
 			$('#option2').attr('style', 'visibility:hidden');
 			
+			$("#more").css('display', 'none');
+			
 			switch (selectedClient) {
 				case 'excel':
-					$('#embedContents').html("<div><h3>Explore the JavaScript API in Excel</h3></div><BR><p>Below, you'll see an Excel Add-in that we've built. This Add-in interacts with the Excel spreadsheet in which it is embedded, using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe width='100%' height='600' frameborder='0' scrolling='no' src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112968&authkey=AG3QwhNGK4H2nSw&em=2&wdAllowInteractivity=False'></iframe><BR><BR>You can download this add-in and more from the <a href='https://store.office.com/api-tutorial-for-office-WA104077907.aspx?assetid=WA104077907' target='_blank'>Office Store.</a><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.");
+					$('#embedContents').html("<div><h3>3. Explore the JavaScript API in Excel</h3></div><BR><p>Below, you'll see an Excel Add-in that we've built. This Add-in interacts with the Excel spreadsheet in which it is embedded, using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe width='100%' height='600' frameborder='0' scrolling='no' src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112968&authkey=AG3QwhNGK4H2nSw&em=2&wdAllowInteractivity=False'></iframe><BR><BR>You can download this add-in and more from the <a href='https://store.office.com/api-tutorial-for-office-WA104077907.aspx?assetid=WA104077907' target='_blank'>Office Store.</a><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.");
 					
 					$('#option1title').text(content.title);
 					$('#option1img').attr('src', content.img.excel);
 					$('#option1text').text(content.text);
-					$('#option1overlaytop').attr('onclick', content.overlaytop.excel);
-					$('#option1overlaybottom').attr('onclick', content.overlaybottom);
+					$('#option1button').attr('onclick', 'selectMore("excel", "content")');
 					
 					$('#option2title').text(taskPane.title);
 					$('#option2img').attr('src', taskPane.img.excel);
 					$('#option2text').text(taskPane.text);
-					$('#option2overlaytop').attr('onclick', taskPane.overlaytop.excel);
-					$('#option2overlaybottom').attr('onclick', taskPane.overlaybottom);
+					$('#option2button').attr('onclick', 'selectMore("excel", "taskPane")');
 					
+					$('#choose-title').text('Excel supports two types of Add-ins. Which one would you like to build?');
+
 					enableOption1();
 					enableOption2();
 					break;
 					
 				case 'outlook':
-					$('#embedContents').html("<div><h3>Explore Outlook Add-ins</h3></div><BR>This short video shows you what an Add-in is and gives a brief introduction to the JavaScript API that powers the Add-ins model.<BR><BR><iframe width='800' height='452' src='https://www.youtube.com/embed/Hov8f_VniCc' frameborder='0' allowfullscreen></iframe><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.<BR><BR>To get some inspiration of what you can build for Outlook, check out these cool apps in the <a href='https://store.office.com/appshome.aspx?ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook' target='_blank'>Office Store</a>:<BR><div class='row'><div class='col-md-2'><a href='https://store.office.com/package-tracker-WA104162083.aspx?assetid=WA104162083&sourcecorrid=398c52e1-d7aa-4025-b55f-8b2543a5be61&searchapppos=17' target='_blank'><img src='packagetracker.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/linkedin-for-outlook-WA102996382.aspx?assetid=WA102996382&sourcecorrid=faab8d46-5571-4ba9-841a-97f6d022fc55&searchapppos=0' target='_blank'><img src='linkedin.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/docusign-for-outlook-WA104218067.aspx?assetid=WA104218067&ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook&homprd=Outlook&sourcecorrid=30d1d84a-07ff-48cd-9acd-ef7791994b87&homappcat=Editor%2527s%2BPicks&homapppos=2&homchv=1' target='_blank'><img src='docusign.png' style='border:0'></a></div></div>");
+					$('#embedContents').html("<div><h3>3. Explore Outlook Add-ins</h3></div><BR>This short video shows you what an Add-in is and gives a brief introduction to the JavaScript API that powers the Add-ins model.<BR><BR><iframe width='800' height='452' src='https://www.youtube.com/embed/Hov8f_VniCc' frameborder='0' allowfullscreen></iframe><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.<BR><BR>To get some inspiration of what you can build for Outlook, check out these cool apps in the <a href='https://store.office.com/appshome.aspx?ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook' target='_blank'>Office Store</a>:<BR><div class='row'><div class='col-md-2'><a href='https://store.office.com/package-tracker-WA104162083.aspx?assetid=WA104162083&sourcecorrid=398c52e1-d7aa-4025-b55f-8b2543a5be61&searchapppos=17' target='_blank'><img src='packagetracker.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/linkedin-for-outlook-WA102996382.aspx?assetid=WA102996382&sourcecorrid=faab8d46-5571-4ba9-841a-97f6d022fc55&searchapppos=0' target='_blank'><img src='linkedin.png' style='border:0'></a></div><div class='col-md-2'><a href='https://store.office.com/docusign-for-outlook-WA104218067.aspx?assetid=WA104218067&ui=en-US&rs=en-US&ad=US&clickedfilter=OfficeProductFilter%3AOutlook&productgroup=Outlook&homprd=Outlook&sourcecorrid=30d1d84a-07ff-48cd-9acd-ef7791994b87&homappcat=Editor%2527s%2BPicks&homapppos=2&homchv=1' target='_blank'><img src='docusign.png' style='border:0'></a></div></div>");
 								
 					$('#option1title').text(compose.title);
 					$('#option1img').attr('src', compose.img);
 					$('#option1text').text(compose.text);
-					$('#option1overlaytop').attr('onclick', compose.overlaytop);
-					$('#option1overlaybottom').attr('onclick', compose.overlaybottom);
+					$('#option1button').attr('onclick', 'selectMore("outlook", "compose")');
 					
 					$('#option2title').text(read.title);
 					$('#option2img').attr('src', read.img);
 					$('#option2text').text(read.text);
-					$('#option2overlaytop').attr('onclick', read.overlaytop);
-					$('#option2overlaybottom').attr('onclick', read.overlaybottom);
+					$('#option2button').attr('onclick', 'selectMore("outlook", "read")');
+					
+					$('#choose-title').text('Outlook supports two types of Add-ins. Which one would you like to build?');
 					
 					enableOption1();
 					enableOption2();
@@ -131,19 +159,19 @@
 					
 				case 'powerpoint':
 				
-					$('#embedContents').html("<div><h3>Explore the JavaScript API in PowerPoint</h3></div><BR><p>Below, you'll see a PowerPoint Add-in that we've built. This Add-in interacts with the PowerPoint presentation in which it is embedded, using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112972&authkey=AMMZi9lIOFr5AaE&em=2&wdAr=1.7777777777777777' width='610px' height='367px' frameborder='0'></iframe><BR><BR>You can download this add-in and more from the <a href='https://store.office.com/api-tutorial-for-office-WA104077907.aspx?assetid=WA104077907'>Office Store.</a><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.");
+					$('#embedContents').html("<div><h3>3. Explore the JavaScript API in PowerPoint</h3></div><BR><p>Below, you'll see a PowerPoint Add-in that we've built. This Add-in interacts with the PowerPoint presentation in which it is embedded, using a powerful JavaScript API. Explore the API by running or changing the code in the tutorials and see what happens.</p><BR><iframe src='https://onedrive.live.com/embed?cid=EA09131E6785F7B8&resid=EA09131E6785F7B8%2112972&authkey=AMMZi9lIOFr5AaE&em=2&wdAr=1.7777777777777777' width='610px' height='367px' frameborder='0'></iframe><BR><BR>You can download this add-in and more from the <a href='https://store.office.com/api-tutorial-for-office-WA104077907.aspx?assetid=WA104077907'>Office Store.</a><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.");
 				
 					$('#option1title').text(content.title);
 					$('#option1img').attr('src', content.img.powerpoint);
 					$('#option1text').text(content.text);
-					$('#option1overlaytop').attr('onclick', content.overlaytop.powerpoint);
-					$('#option1overlaybottom').attr('onclick', content.overlaybottom);
+					$('#option1button').attr('onclick', 'selectMore("powerpoint", "content")');
 					
 					$('#option2title').text(taskPane.title);
 					$('#option2img').attr('src', taskPane.img.powerpoint);
 					$('#option2text').text(taskPane.text);
-					$('#option2overlaytop').attr('onclick', taskPane.overlaytop.powerpoint);
-					$('#option2overlaybottom').attr('onclick', taskPane.overlaybottom);
+					$('#option2button').attr('onclick', 'selectMore("powerpoint", "taskPane")');
+					
+					$('#choose-title').text('PowerPoint supports two types of Add-ins. Which one would you like to build?');
 					
 					enableOption1();
 					enableOption2();
@@ -151,16 +179,18 @@
 					
 				case 'word':
 				
-				$('#embedContents').html("<div><h3>Explore Word Add-ins</h3></div><BR>This short video shows you what a Word Add-in looks like and gives a brief introduction to the JavaScript API that powers the Add-ins model.<BR><BR><iframe width='800' height='452' src='https://www.youtube.com/embed/S23rcdX96Wc' frameborder='0' allowfullscreen></iframe><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.<BR>");
+				$('#embedContents').html("<div><h3>3. Explore Word Add-ins</h3></div><BR>This short video shows you what a Word Add-in looks like and gives a brief introduction to the JavaScript API that powers the Add-ins model.<BR><BR><iframe width='800' height='452' src='https://www.youtube.com/embed/S23rcdX96Wc' frameborder='0' allowfullscreen></iframe><BR><BR>For a full list of the APIs available, check out the <a href='https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx' target='_blank'>reference documentation</a>.<BR>");
 				
 				
 					$('#option1title').text(taskPane.title);
 					$('#option1img').attr('src', taskPane.img.word);
 					$('#option1text').text(taskPane.text);
-					$('#option1overlaytop').attr('onclick', taskPane.overlaytop.word);
-					$('#option1overlaybottom').attr('onclick', taskPane.overlaybottom);
+					$('#option1button').attr('onclick', 'selectMore("word", "taskPane")');
+					
+					$('#choose-title').text('You can extend Word with a Task Pane Add-in. Click on the button below to learn how to get started building a Task Pane Add-in.');
 					
 					enableOption1();
+					$('#option2button').css('visibility','hidden');
 					break;
 			}
 			cardTracker.removeBlockingCard();
@@ -343,18 +373,18 @@
             <div id="myNavBar"></div>
 	        <div id="o365-progressTrackerContainer">
             
-            <div class="card" id="1" name="Intro" >
-                <div><h3>Introduction to Office Add-Ins (formerly Apps for Office)</h3></div><BR>
-				
+            <div class="card" id="1" name="1. Intro" >
+                <div><h3>1. Introduction to Office Add-Ins (formerly Apps for Office)</h3></div><BR>
+				<p>An Add-in runs inside an Office application and can interact with the contents of the Office document using our rich JavaScript API.</p><BR>
 				<iframe width="500" height="300" src="https://www.youtube.com/embed/2hCg3OptVCs" frameborder="0" allowfullscreen></iframe><BR><BR>
-                <p>An Add-in runs inside an Office application and can interact with the contents of the Office document using our rich JavaScript API.</p><BR>
+				<p>Under the hood, an Add-in is simply a <b>web app</b> that you can <b>host anywhere</b>. Using a manifest.xml file, you tell us where your web app is located and how you want it to appear. We'll take care of making it show up within Office.</p><BR>
 				<h4>Office Add-in = manifest.xml + your own web app</h4><BR>
-				<p>Under the hood, it's simply a <b>web app</b> that you can <b>host anywhere</b>. Using a manifest.xml file, you tell us where your web app is located and how you want it to appear. We'll take care of making it show up within Office.</p><BR>
+				
 
             </div>
         
-            <div class="card" id="2" name="Select app" isBlocking="true">
-                <h3>Select the Office app that you wish to build an Add-in for:</h3><br>
+            <div class="card" id="2" name="2. Select app" isBlocking="true">
+                <h3>2. Select the Office app that you wish to build an Add-in for:</h3><br>
                 <div class="btn-group btn-group-justified" role="group">
                     <div class="btn-group" role="group">
                         <button type="button" class="btn btn-default" onclick="selectClient('excel')"><img src="excellogo.png" width="50" height="50" style="border:0px">Excel</button>
@@ -379,61 +409,53 @@
                 </div>
 
             </div>
-                
-            <div class="card" id="3" name="Explore">
+				
+            <div class="card" id="3" name="3. Explore">
 				<div id="embedContents">
 
 				</div>
 			
             </div>
             
-            <div class="card" id="4" name="Build">
-				<div><h3>Build your first Add-in</h3></div><br>
-				<p>Choose which kind of Add-in you'd like to build.</p><br>
+            <div class="card" id="4" name="4. Build">
+				<div><h3>4. Build your first Add-in</h3></div><br>
+				<p id="choose-title">Choose which kind of Add-in you'd like to build.</p><br>
 				
-				<div class="row" id="optionRow">
-				
-					<div class="col-md-5 addinOption" id="option1">
-						<h4 id="option1title" style="color:#BD3501;font-weight:bold;">Task Pane</h4>
-						<img id="option1img" src="exceltaskpane.PNG" style="border:0px; margin:20 0 20 0;">
-						<p id="option1text">A Task Pane Add-in appears next to the document.</p>
-						<div id="option1overlay" class="mouseoverOverlay" style="visibility:hidden">
-							<div id="option1overlaytop" class="topOverlay" style="cursor:pointer">
-								<img src="open.png" style="border:0px; float: left; margin:20" height="50" width="50"></img>
-								<h4 class="topOverlayText" style="cursor:pointer;">Start building</h4>Open a sample using an in-browser editor for Add-ins
-							</div>
-							<hr class="featurette-divider">
-							<div id="option1overlaybottom" class="bottomOverlay" style="cursor:pointer">
-								<img src="save.png" style="border:0px; float: left; margin:20" height="50" width="50"></img>
-								<h4 class="bottomOverlayText" style="cursor:pointer">Download</h4>Download a sample from GitHub
-							</div>
-						</div>				
-					</div>
-					
-					<div class="col-md-5 addinOption" id="option2">
-						<h4 id="option2title" style="color:#BD3501;font-weight:bold;">Content Add-in</h4>
-						<img id="option2img" src="excelcontent.PNG" style="border:0px; margin:20 0 20 0;">
-						<p id="option2text">A Content Add-in appears in-line with the document</p>
-						<div id="option2overlay" class="mouseoverOverlay" style="visibility:hidden">
-							<div id="option2overlaytop" class="topOverlay" style="cursor:pointer">
-								<img src="open.png" style="border:0px; float: left; margin:20" height="50" width="50"></img>
-								<h4 class="topOverlayText" style="cursor:pointer">Start building</h4>
-								Open a sample using an in-browser editor for Add-ins
-							</div>
-							<hr class="featurette-divider">
-							<div id="option2overlaybottom" class="bottomOverlay" style="cursor:pointer">
-								<img src="save.png" style="border:0px; float: left; margin:20" height="50" width="50"></img>
-								<h4 class="bottomOverlayText" style="cursor:pointer">Download</h4>
-								Download a sample from GitHub
-							</div>
-					</div>					
-						</div>	
-					
+				<div class="btn-group btn-group-justified" role="group">
+                    <div class="btn-group" role="group">
+                        <button id="option1button" type="button" class="btn btn-default" style='max-width: 400px; position: relative; padding:20px; visibility:hidden'>
+							<h4 id="option1title" style="color:#BD3501;font-weight:bold;"></h4>
+							<img id="option1img" style="border:0px; margin:20 0 20 0; display:block; margin-left:auto; margin-right:auto;">
+							<p id="option1text" style="display:block; margin-left:auto; margin-right:auto;"></p>
+						</button>
+						<button id="option2button" type="button" class="btn btn-default" style='max-width: 400px; position: relative; padding:20px; visibility:hidden'>
+							<h4 id="option2title" style="color:#BD3501;font-weight:bold;"></h4>
+							<img id="option2img" style="border:0px; margin:20 0 20 0; display:block; margin-left:auto; margin-right:auto;">
+							<p id="option2text" style="display:block; margin-left:auto; margin-right:auto;"></p>
+						</button>
+                    </div>
 				</div>
+					
+
+			</div>
+			
+			
+			<div class="card-more" id="more" style="display:none">
+				<p>If you're a beginner to developing Add-ins, we recommend starting with the playground for Add-ins. After a while, you'll probably graduate to using your own IDE, but for now, the playground is the absolute quickest way to create, edit and deploy an Add-in within an Office app.</p><BR>
+				<p>We've loaded a sample Add-in project into the playground for you to tinker with and run.</p>
+				<BR>
+				<img src="capture7.PNG" style="border:0px; margin:0 0 0 0;">
+				<BR>
+				<p>When you get to the playground, click on the Run button to see the Add-in working, or click on the Open in Visual Studio button to continue working from Visual Studio.</p><BR>
+				<p>
+					<h4><b><a id="more-playground" href="#" target="_blank">Start building using the playground for Add-ins&nbsp;&nbsp<img src="http://dev.office.com/Themes/DevOffice/Content/Images/seeMoreIcon.png" style="border:0px; margin:-5 0 0 0; padding: 0 0 0 0; display:inline-block"></a></b></h4>
+				</p><BR>
+				<p>Alternatively, you can <a id="more-github" href="#" target="_blank">download the sample from GitHub</a>.</p>
+				
 			</div>
             
-            <div class="card" id="5" name="Next steps">
-                <div><h3>Next steps</h3></div>
+            <div class="card" id="5" name="5. More Resources">
+                <div><h3>5. More Resources</h3></div>
                 <div style="margin-top:20px;">
 					<ul style="line-height:2;">
 						<li><a href="https://msdn.microsoft.com/EN-US/library/office/fp142185.aspx" target='_blank'>Reference</a><div>Reference documentation for the JavaScript API for Add-ins</div></li>
